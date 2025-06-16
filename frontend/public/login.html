@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EDUVIBE-X</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body class="bg-black text-white font-inter">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <a href="/" class="text-4xl font-bold">EDUVIBE-X</a>
+                <p class="text-gray-400 mt-2">Welcome back!</p>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 mb-8">
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button class="user-type-btn active" data-type="student">
+                        <i class="fas fa-user-graduate text-xl mb-2"></i>
+                        <span>Student</span>
+                    </button>
+                    <button class="user-type-btn" data-type="teacher">
+                        <i class="fas fa-chalkboard-teacher text-xl mb-2"></i>
+                        <span>Teacher</span>
+                    </button>
+                    <button class="user-type-btn" data-type="parent">
+                        <i class="fas fa-users text-xl mb-2"></i>
+                        <span>Parent</span>
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2" for="phone">
+                            Phone Number or Email
+                        </label>
+                        <input 
+                            type="text" 
+                            id="phone" 
+                            name="phone" 
+                            class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition"
+                            placeholder="Enter your phone number or email"
+                            required
+                        >
+                    </div>
+
+                    <div id="otpSection" class="hidden space-y-4">
+                        <div class="flex justify-between items-center">
+                            <label class="block text-sm font-medium" for="otp">
+                                Enter OTP
+                            </label>
+                            <button type="button" id="resendOtp" class="text-sm text-gray-400 hover:text-white transition">
+                                Resend OTP
+                            </button>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition">
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        id="loginButton"
+                        class="w-full bg-white text-black py-3 rounded-lg font-medium hover:bg-gray-100 transition"
+                    >
+                        Get OTP
+                    </button>
+                </form>
+            </div>
+
+            <!-- Sign Up Link -->
+            <p class="text-center text-gray-400">
+                Don't have an account? 
+                <a href="/signup" class="text-white hover:underline">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .user-type-btn {
+            @apply flex flex-col items-center justify-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition cursor-pointer flex-1;
+        }
+        .user-type-btn.active {
+            @apply bg-white/20 border border-white/30;
+        }
+        .otp-input::-webkit-outer-spin-button,
+        .otp-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .otp-input {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+    <!-- Login Page Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userTypeBtns = document.querySelectorAll('.user-type-btn');
+            const loginForm = document.getElementById('loginForm');
+            const phoneInput = document.getElementById('phone');
+            const otpSection = document.getElementById('otpSection');
+            const loginButton = document.getElementById('loginButton');
+            const otpInputs = document.querySelectorAll('.otp-input');
+            const resendOtpBtn = document.getElementById('resendOtp');
+            
+            // Handle user type selection
+            userTypeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    userTypeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+
+            // Handle form submission
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                if (!otpSection.classList.contains('hidden')) {
+                    // Handle OTP verification
+                    const otp = Array.from(otpInputs).map(input => input.value).join('');
+                    if (otp.length === 6) {
+                        // Verify OTP
+                        console.log('Verifying OTP:', otp);
+                        // Add your OTP verification logic here
+                    }
+                } else {
+                    // Show OTP section
+                    otpSection.classList.remove('hidden');
+                    loginButton.textContent = 'Verify OTP';
+                    // Send OTP
+                    console.log('Sending OTP to:', phoneInput.value);
+                    // Add your OTP sending logic here
+                }
+            });
+
+            // Handle OTP input
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('keyup', (e) => {
+                    if (e.key !== 'Backspace' && index < otpInputs.length - 1 && input.value) {
+                        otpInputs[index + 1].focus();
+                    }
+                    if (e.key === 'Backspace' && index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+            });
+
+            // Handle resend OTP
+            resendOtpBtn.addEventListener('click', () => {
+                console.log('Resending OTP to:', phoneInput.value);
+                // Add your resend OTP logic here
+            });
+        });
+    </script>
+</body>
+</html>
