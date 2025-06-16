@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUVIBE-X - Revolutionizing Exam Preparation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/landing.css">
+
+    <!-- Custom JavaScript -->
+    <script src="/js/main.js" defer></script>
+</head>
+<body class="bg-black text-white font-inter">
+    <!-- Splash Screen with Logo -->
+    <div id="splash-screen" class="fixed inset-0 flex items-center justify-center bg-black z-50">
+        <!-- Logo placeholder - Will be replaced with provided logo -->
+        <div class="text-4xl font-bold animate-pulse">EDUVIBE-X</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-sm z-40 border-b border-white/10">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-bold">EDUVIBE-X</div>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#" class="hover:text-gray-300 transition">Home</a>
+                        <a href="#" class="hover:text-gray-300 transition">Courses</a>
+                        <a href="#" class="hover:text-gray-300 transition">About</a>
+                        <a href="#" class="hover:text-gray-300 transition">Contact</a>
+                        <button onclick="location.href='/login'" class="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-200 transition">
+                            Login
+                        </button>
+                    </div>
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center pt-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center">
+                    <h1 class="text-6xl font-bold mb-6">Revolutionizing Exam Preparation</h1>
+                    <p class="text-xl text-gray-400 mb-8">
+                        Your gateway to success in JEE, NEET, and Board Exams
+                    </p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <button onclick="location.href='/signup.html'" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition">
+                            Get Started
+                        </button>
+                        <button onclick="location.href='/courses.html'" class="border border-white px-8 py-3 rounded-full hover:bg-white/10 transition">
+                            Explore Courses
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white/5">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12">Why Choose EDUVIBE-X?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="p-6 rounded-xl bg-white/10 backdrop-blur-sm">
+                        <i class="fas fa-video text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Live & Recorded Classes</h3>
+                        <p class="text-gray-400">Access high-quality video lectures from top educators anytime, anywhere.</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="p-6 rounded-xl bg-white/10 backdrop-blur-sm">
+                        <i class="fas fa-book-open text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Comprehensive Study Material</h3>
+                        <p class="text-gray-400">Get access to detailed notes, DPPs, and practice materials.</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="p-6 rounded-xl bg-white/10 backdrop-blur-sm">
+                        <i class="fas fa-users text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">1:1 Mentorship</h3>
+                        <p class="text-gray-400">Personal guidance from experienced mentors to help you succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-50 hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#" class="text-2xl hover:text-gray-300 transition">Home</a>
+            <a href="#" class="text-2xl hover:text-gray-300 transition">Courses</a>
+            <a href="#" class="text-2xl hover:text-gray-300 transition">About</a>
+            <a href="#" class="text-2xl hover:text-gray-300 transition">Contact</a>
+            <button onclick="location.href='/login'" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition">
+                Login
+            </button>
+            <button class="text-2xl mt-8" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
