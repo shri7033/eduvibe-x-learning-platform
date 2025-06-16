@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EDUVIBE-X - Courses</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/global.css" />
+  <style>
+    :root {
+      --golden: #d4af37;
+      --black-bg: #000000;
+      --dark-bg: #121212;
+      --text-light: #f5f5f5;
+      --text-muted: #b0a97f;
+    }
+    body {
+      background-color: var(--black-bg);
+      color: var(--text-light);
+      font-family: 'Inter', sans-serif;
+    }
+    a:hover {
+      color: var(--golden);
+    }
+    .btn-golden {
+      background-color: var(--golden);
+      color: var(--black-bg);
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-golden:hover {
+      background-color: #b38f2f;
+    }
+    .course-card {
+      background-color: var(--dark-bg);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+    .course-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .course-content {
+      padding: 1rem;
+    }
+    .course-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+      color: var(--golden);
+    }
+    .course-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      min-height: 3rem;
+    }
+    .course-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-sm z-40 border-b border-white/10">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="text-2xl font-bold text-golden">EDUVIBE-X</div>
+      <div class="hidden md:flex space-x-8 text-white">
+        <a href="/index.html" class="hover:text-golden transition">Home</a>
+        <a href="/courses.html" class="text-golden font-semibold">Courses</a>
+        <a href="#" class="hover:text-golden transition">About</a>
+        <a href="#" class="hover:text-golden transition">Contact</a>
+        <button onclick="location.href='/login.html'" class="bg-golden text-black px-6 py-2 rounded-full hover:bg-yellow-600 transition">
+          Login
+        </button>
+      </div>
+      <button class="md:hidden text-white">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-24 pb-12 bg-black text-center">
+    <h1 class="text-5xl font-bold text-golden mb-4">Explore Our Courses</h1>
+    <p class="text-gray-400 max-w-xl mx-auto mb-8">Choose from a wide range of courses tailored for JEE, NEET, Board Exams, and Olympiads.</p>
+  </section>
+
+  <!-- Courses Grid -->
+  <section class="container mx-auto px-4 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- Course Card Example -->
+      <div class="course-card">
+        <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Physics Course" class="course-image" />
+        <div class="course-content">
+          <h2 class="course-title">Physics for JEE</h2>
+          <p class="course-desc">Master the concepts of mechanics, thermodynamics, and electromagnetism with expert guidance.</p>
+          <div class="course-footer">
+            <span>Teacher: Dr. Sharma</span>
+            <span class="font-semibold text-golden">₹4999</span>
+          </div>
+          <button onclick="alert('Course details coming soon!')" class="btn-golden mt-4 w-full">View Details</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg" alt="Chemistry Course" class="course-image" />
+        <div class="course-content">
+          <h2 class="course-title">Organic Chemistry</h2>
+          <p class="course-desc">Learn the fundamentals of organic reactions and mechanisms for NEET preparation.</p>
+          <div class="course-footer">
+            <span>Teacher: Prof. Mehta</span>
+            <span class="font-semibold text-golden">₹3999</span>
+          </div>
+          <button onclick="alert('Course details coming soon!')" class="btn-golden mt-4 w-full">View Details</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg" alt="Mathematics Course" class="course-image" />
+        <div class="course-content">
+          <h2 class="course-title">Mathematics Mastery</h2>
+          <p class="course-desc">Comprehensive course covering algebra, calculus, and geometry for all competitive exams.</p>
+          <div class="course-footer">
+            <span>Teacher: Ms. Kapoor</span>
+            <span class="font-semibold text-golden">₹5999</span>
+          </div>
+          <button onclick="alert('Course details coming soon!')" class="btn-golden mt-4 w-full">View Details</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg" alt="Biology Course" class="course-image" />
+        <div class="course-content">
+          <h2 class="course-title">Biology Essentials</h2>
+          <p class="course-desc">Detailed lessons on human anatomy, genetics, and ecology for NEET aspirants.</p>
+          <div class="course-footer">
+            <span>Teacher: Dr. Singh</span>
+            <span class="font-semibold text-golden">₹4499</span>
+          </div>
+          <button onclick="alert('Course details coming soon!')" class="btn-golden mt-4 w-full">View Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-white/10 py-6 text-center text-gray-500">
+    &copy; 2025 EDUVIBE-X. All rights reserved.
+  </footer>
+</body>
+</html>
