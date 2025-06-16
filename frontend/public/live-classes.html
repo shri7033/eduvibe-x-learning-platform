@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUVIBE-X - Live Classes</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/live-classes.css">
+
+    <!-- Custom JavaScript -->
+    <script src="/js/live-classes.js" defer></script>
+</head>
+<body class="bg-black text-white font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-sm z-40 border-b border-white/10">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-[#d4af37]">EDUVIBE-X</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/index.html" class="hover:text-[#d4af37] transition">Home</a>
+                    <a href="/courses.html" class="hover:text-[#d4af37] transition">Courses</a>
+                    <a href="#" class="hover:text-[#d4af37] transition">About</a>
+                    <a href="#" class="hover:text-[#d4af37] transition">Contact</a>
+                    <button onclick="location.href='/login.html'" class="bg-[#d4af37] text-black px-6 py-2 rounded-full hover:bg-[#b38f2f] transition">
+                        Login
+                    </button>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pt-24 pb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Live Stream Section -->
+            <div class="lg:col-span-3">
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <!-- Video Stream -->
+                    <div class="relative aspect-video bg-black">
+                    <video id="liveStream" 
+                           class="w-full h-full object-contain" 
+                           controls
+                           autoplay
+                           muted
+                           playsinline>
+                        <source src="/videos/physics-lecture.mp4" type="video/mp4">
+                        Your browser does not support the video element.
+                    </video>
+                        
+                        <!-- Stream Controls -->
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <!-- Volume Control -->
+                                    <button class="volume-btn text-white hover:text-[#d4af37]">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                    <input type="range" class="volume-slider w-20" min="0" max="100" value="100">
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <!-- Quality Selector -->
+                                    <select class="quality-selector bg-black text-white border border-[#d4af37] rounded px-2 py-1 text-sm">
+                                        <option value="360">360p</option>
+                                        <option value="480">480p</option>
+                                        <option value="720">720p</option>
+                                        <option value="1080">1080p</option>
+                                    </select>
+                                    <!-- Fullscreen Button -->
+                                    <button class="fullscreen-btn text-white hover:text-[#d4af37]">
+                                        <i class="fas fa-expand"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live Indicator -->
+                        <div class="absolute top-4 left-4 flex items-center space-x-2 bg-red-600 px-3 py-1 rounded-full text-sm">
+                            <span class="animate-pulse w-2 h-2 bg-white rounded-full"></span>
+                            <span>LIVE</span>
+                        </div>
+
+                        <!-- Viewer Count -->
+                        <div class="absolute top-4 right-4 bg-black/50 px-3 py-1 rounded-full text-sm">
+                            <i class="fas fa-eye mr-2"></i>
+                            <span id="viewerCount">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Class Info -->
+                    <div class="p-4">
+                        <h1 class="text-2xl font-bold text-[#d4af37]">Advanced Physics - Wave Motion</h1>
+                        <p class="text-gray-400 mt-2">Dr. Sarah Johnson • Physics</p>
+                    </div>
+                </div>
+
+                <!-- Polls Section -->
+                <div class="mt-6 bg-gray-900 rounded-lg p-4">
+                    <h2 class="text-xl font-semibold mb-4 text-[#d4af37]">Active Poll</h2>
+                    <div id="pollContainer" class="hidden">
+                        <p class="text-lg mb-4" id="pollQuestion">What is the primary factor affecting wave speed?</p>
+                        <div class="space-y-3" id="pollOptions">
+                            <button class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition">
+                                Medium elasticity
+                            </button>
+                            <button class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition">
+                                Wave frequency
+                            </button>
+                            <button class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition">
+                                Wave amplitude
+                            </button>
+                            <button class="w-full text-left p-3 rounded bg-white/10 hover:bg-white/20 transition">
+                                Medium density
+                            </button>
+                        </div>
+                    </div>
+                    <div id="noPollMessage" class="text-gray-400">
+                        No active polls at the moment.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat & Interactions Sidebar -->
+            <div class="bg-gray-900 rounded-lg overflow-hidden">
+                <!-- Tabs -->
+                <div class="flex border-b border-white/10">
+                    <button class="flex-1 px-4 py-3 text-[#d4af37] border-b-2 border-[#d4af37]">Chat</button>
+                    <button class="flex-1 px-4 py-3 text-gray-400 hover:text-white">Participants</button>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="h-[calc(100vh-400px)] overflow-y-auto p-4 space-y-4" id="chatMessages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+
+                <!-- Hand Raise & Chat Input -->
+                <div class="border-t border-white/10 p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <button id="handRaiseBtn" class="flex items-center space-x-2 text-gray-400 hover:text-[#d4af37]">
+                            <i class="fas fa-hand"></i>
+                            <span>Raise Hand</span>
+                        </button>
+                        <span id="handRaiseStatus" class="text-sm text-gray-400 hidden">
+                            Hand raised
+                        </span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <input type="text" id="chatInput" 
+                               class="flex-1 bg-white/10 rounded-full px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#d4af37]"
+                               placeholder="Type your message...">
+                        <button id="sendMessageBtn" class="text-[#d4af37] hover:text-[#b38f2f]">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notifications" class="fixed bottom-4 right-4 space-y-2">
+        <!-- Notifications will be added here dynamically -->
+    </div>
+</body>
+</html>
