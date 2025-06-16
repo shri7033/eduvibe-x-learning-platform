@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EDUVIBE-X</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+</head>
+<body class="bg-black text-white font-inter">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-xl w-full">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <a href="/" class="text-4xl font-bold">EDUVIBE-X</a>
+                <p class="text-gray-400 mt-2">Create your account</p>
+            </div>
+
+            <!-- User Type Selection -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 mb-8">
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button class="user-type-btn active" data-type="student">
+                        <i class="fas fa-user-graduate text-xl mb-2"></i>
+                        <span>Student</span>
+                    </button>
+                    <button class="user-type-btn" data-type="teacher">
+                        <i class="fas fa-chalkboard-teacher text-xl mb-2"></i>
+                        <span>Teacher</span>
+                    </button>
+                    <button class="user-type-btn" data-type="parent">
+                        <i class="fas fa-users text-xl mb-2"></i>
+                        <span>Parent</span>
+                    </button>
+                </div>
+
+                <!-- Signup Form -->
+                <form id="signupForm" class="space-y-6">
+                    <!-- Personal Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2" for="fullName">
+                                Full Name (as per Aadhar)
+                            </label>
+                            <div class="space-y-1">
+                                <input 
+                                    type="text" 
+                                    id="fullName" 
+                                    name="fullName" 
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                    required
+                                    pattern="^[a-zA-Z ]{3,50}$"
+                                    aria-describedby="fullName-hint fullName-error"
+                                    placeholder="Enter your full name"
+                                >
+                                <div class="flex items-center justify-between text-xs mt-1.5">
+                                    <p id="fullName-hint" class="text-gray-400">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        Only letters and spaces allowed
+                                    </p>
+                                    <p id="fullName-error" class="text-red-500/70 hidden peer-invalid:block transition-all duration-300 flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>
+                                        Invalid name format
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" for="phone">
+                                Phone Number
+                            </label>
+                            <div class="space-y-1">
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                    required
+                                    pattern="^[6-9]\d{9}$"
+                                    aria-describedby="phone-hint phone-error"
+                                    placeholder="Enter 10-digit mobile number"
+                                >
+                                <div class="flex items-center justify-between text-xs mt-1.5">
+                                    <p id="phone-hint" class="text-gray-400">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        10-digit number starting with 6-9
+                                    </p>
+                                    <p id="phone-error" class="text-red-500/70 hidden peer-invalid:block transition-all duration-300 flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>
+                                        Invalid phone number
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" for="email">
+                                Email Address
+                            </label>
+                            <div class="space-y-1">
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 focus:bg-white/10 focus:ring-1 focus:ring-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                    required
+                                    pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                                    aria-describedby="email-hint email-error"
+                                    placeholder="Enter your email address"
+                                >
+                                <div class="flex items-center justify-between text-xs mt-1.5">
+                                    <p id="email-hint" class="text-gray-400">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        We'll send a verification code here
+                                    </p>
+                                    <p id="email-error" class="text-red-500/70 hidden peer-invalid:block transition-all duration-300 flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>
+                                        Invalid email format
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2" for="dob">
+                                Date of Birth
+                            </label>
+                            <input 
+                                type="date" 
+                                id="dob" 
+                                name="dob" 
+                                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Aadhar Details -->
+                    <div>
+                        <label class="block text-sm font-medium mb-2" for="aadhar">
+                            Aadhar Number
+                        </label>
+                            <div class="space-y-1">
+                                <input 
+                                    type="text" 
+                                    id="aadhar" 
+                                    name="aadhar" 
+                                    class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                    maxlength="12"
+                                    required
+                                    pattern="^\d{12}$"
+                                    aria-describedby="aadhar-hint aadhar-error"
+                                    placeholder="Enter 12-digit Aadhar number"
+                                >
+                                <div class="flex items-center justify-between text-xs mt-1.5">
+                                    <p id="aadhar-hint" class="text-gray-400">
+                                        <i class="fas fa-info-circle mr-1"></i>
+                                        12-digit number as shown on your card
+                                    </p>
+                                    <p id="aadhar-error" class="text-red-500/70 hidden peer-invalid:block transition-all duration-300 flex items-center">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>
+                                        Invalid Aadhar number
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+
+                    <!-- Parent Details (for Student) -->
+                    <div id="parentDetails" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2" for="parentName">
+                                    Parent's Name
+                                </label>
+                                <div class="space-y-1">
+                                    <input 
+                                        type="text" 
+                                        id="parentName" 
+                                        name="parentName" 
+                                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                        pattern="^[a-zA-Z ]{3,50}$"
+                                        aria-describedby="parentName-hint parentName-error"
+                                        placeholder="Enter parent's full name"
+                                    >
+                                    <div class="flex items-center justify-between text-xs mt-1">
+                                        <p id="parentName-hint" class="text-gray-400">Only letters and spaces allowed</p>
+                                        <p id="parentName-error" class="text-red-500/70 hidden peer-invalid:block transition-opacity flex items-center">
+                                            <i class="fas fa-exclamation-circle mr-1"></i>
+                                            Invalid name format
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2" for="parentPhone">
+                                    Parent's Phone Number
+                                </label>
+                                <div class="space-y-1">
+                                    <input 
+                                        type="tel" 
+                                        id="parentPhone" 
+                                        name="parentPhone" 
+                                        class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition-all duration-300 peer invalid:border-red-500/50 valid:border-green-500/50 placeholder-white/30"
+                                        pattern="^[6-9]\d{9}$"
+                                        aria-describedby="parentPhone-hint parentPhone-error"
+                                        placeholder="Enter parent's mobile number"
+                                    >
+                                    <div class="flex items-center justify-between text-xs mt-1">
+                                        <p id="parentPhone-hint" class="text-gray-400">10-digit number starting with 6-9</p>
+                                        <p id="parentPhone-error" class="text-red-500/70 hidden peer-invalid:block transition-opacity flex items-center">
+                                            <i class="fas fa-exclamation-circle mr-1"></i>
+                                            Invalid phone number
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OTP Verification Section -->
+                    <div id="otpSection" class="hidden mt-8">
+                        <div class="bg-black/50 backdrop-blur-sm p-8 rounded-xl border border-white/10 space-y-6">
+                            <div class="text-center space-y-3">
+                                <h3 class="text-xl font-semibold">Verify Your Account</h3>
+                                <div class="space-y-2">
+                                    <p class="text-sm text-gray-400">
+                                        We've sent verification codes to:
+                                    </p>
+                                    <div class="space-y-1">
+                                        <p class="text-sm">
+                                            <i class="fas fa-mobile-alt mr-2 text-gray-400"></i>
+                                            <span id="phoneDisplay" class="font-medium"></span>
+                                        </p>
+                                        <p class="text-sm">
+                                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                                            <span id="emailDisplay" class="font-medium"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <label class="block text-sm font-medium">
+                                        Enter 6-digit verification code
+                                    </label>
+                                    <div class="flex items-center gap-2">
+                                        <span id="otpTimer" class="text-sm text-gray-400 min-w-[2.5rem] text-right"></span>
+                                        <button type="button" id="resendOtp" class="text-sm text-gray-400 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1" disabled>
+                                            <i class="fas fa-redo-alt text-xs"></i>
+                                            <span>Resend</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center gap-2">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                    <input type="text" maxlength="1" class="otp-input w-12 h-12 text-center text-2xl bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-white/30 transition" inputmode="numeric" pattern="[0-9]*">
+                                </div>
+                                <p class="text-sm text-gray-400 text-center">
+                                    Didn't receive the code? Check your spam folder or try resending after the timer ends.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <button 
+                            type="submit" 
+                            id="signupButton"
+                            class="w-full bg-white text-black py-3 rounded-lg font-medium hover:bg-gray-100 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <span class="inline-flex items-center">
+                                <span id="buttonText">Create Account</span>
+                                <span id="buttonLoader" class="hidden ml-2">
+                                    <i class="fas fa-circle-notch fa-spin"></i>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Login Link -->
+            <p class="text-center text-gray-400">
+                Already have an account? 
+                <a href="/login" class="text-white hover:underline">Log in</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Custom Styles -->
+    <style>
+        .user-type-btn {
+            @apply flex flex-col items-center justify-center p-4 rounded-lg bg-white/5 hover:bg-white/10 transition cursor-pointer flex-1;
+        }
+        .user-type-btn.active {
+            @apply bg-white/20 border border-white/30;
+        }
+        .otp-input::-webkit-outer-spin-button,
+        .otp-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .otp-input {
+            -moz-appearance: textfield;
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Signup Page Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userTypeBtns = document.querySelectorAll('.user-type-btn');
+            const signupForm = document.getElementById('signupForm');
+            const parentDetails = document.getElementById('parentDetails');
+            const otpSection = document.getElementById('otpSection');
+            const signupButton = document.getElementById('signupButton');
+            const otpInputs = document.querySelectorAll('.otp-input');
+            const resendOtpBtn = document.getElementById('resendOtp');
+            
+            // Handle user type selection
+            userTypeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    userTypeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Show/hide parent details based on user type
+                    if (btn.dataset.type === 'student') {
+                        parentDetails.classList.remove('hidden');
+                    } else {
+                        parentDetails.classList.add('hidden');
+                    }
+                });
+            });
+
+            let signupToken = null;
+            let currentIdentifier = null;
+
+            // Loading state management
+            function setLoading(isLoading) {
+                const button = document.getElementById('signupButton');
+                const buttonText = document.getElementById('buttonText');
+                const buttonLoader = document.getElementById('buttonLoader');
+                
+                button.disabled = isLoading;
+                buttonLoader.classList.toggle('hidden', !isLoading);
+                
+                if (isLoading) {
+                    buttonText.textContent = otpSection.classList.contains('hidden') ? 
+                        'Creating Account...' : 'Verifying...';
+                } else {
+                    buttonText.textContent = otpSection.classList.contains('hidden') ? 
+                        'Create Account' : 'Verify Code';
+                }
+            }
+
+            // Form validation
+            function validateForm() {
+                const fullName = document.getElementById('fullName').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const dob = document.getElementById('dob').value;
+                const aadhar = document.getElementById('aadhar').value.trim();
+                const userType = document.querySelector('.user-type-btn.active')?.dataset.type;
+                
+                if (!fullName) {
+                    showNotification('Please enter your full name', 'error');
+                    return false;
+                }
+                
+                if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
+                    showNotification('Please enter a valid 10-digit phone number', 'error');
+                    return false;
+                }
+                
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showNotification('Please enter a valid email address', 'error');
+                    return false;
+                }
+                
+                if (!dob) {
+                    showNotification('Please enter your date of birth', 'error');
+                    return false;
+                }
+                
+                if (!aadhar || !/^\d{12}$/.test(aadhar)) {
+                    showNotification('Please enter a valid 12-digit Aadhar number', 'error');
+                    return false;
+                }
+                
+                if (!userType) {
+                    showNotification('Please select your user type', 'error');
+                    return false;
+                }
+                
+                if (userType === 'student') {
+                    const parentName = document.getElementById('parentName').value.trim();
+                    const parentPhone = document.getElementById('parentPhone').value.trim();
+                    
+                    if (!parentName) {
+                        showNotification('Please enter parent\'s name', 'error');
+                        return false;
+                    }
+                    
+                    if (!parentPhone || !/^[6-9]\d{9}$/.test(parentPhone)) {
+                        showNotification('Please enter a valid parent\'s phone number', 'error');
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+
+            // Form submission handling
+            function handleFormSubmit(e) {
+                e.preventDefault();
+                
+                // Disable all form inputs during submission
+                const inputs = Array.from(signupForm.querySelectorAll('input, button'));
+                const userTypeButtons = document.querySelectorAll('.user-type-btn');
+                
+                try {
+                    if (!otpSection.classList.contains('hidden')) {
+                        const otp = Array.from(otpInputs).map(input => input.value).join('');
+                        if (otp.length !== 6) {
+                            showNotification('Please enter the complete verification code', 'error');
+                            otpInputs[0].focus();
+                            return;
+                        }
+                    } else if (!validateForm()) {
+                        // Focus the first invalid input
+                        const firstInvalid = signupForm.querySelector(':invalid');
+                        if (firstInvalid) {
+                            firstInvalid.focus();
+                        }
+                        return;
+                    }
+                    
+                    // Disable form interaction during submission
+                    inputs.forEach(input => input.disabled = true);
+                    userTypeButtons.forEach(btn => btn.style.pointerEvents = 'none');
+                    
+                    setLoading(true);
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showNotification('An error occurred. Please try again.', 'error');
+                    
+                    // Re-enable form interaction
+                    inputs.forEach(input => input.disabled = false);
+                    userTypeButtons.forEach(btn => btn.style.pointerEvents = 'auto');
+                    setLoading(false);
+                    
+                    return false;
+                }
+            }
+
+            // Handle form submission
+            signupForm.addEventListener('submit', async (e) => {
+                if (!handleFormSubmit(e)) {
+                    return;
+                }
+                
+                if (!otpSection.classList.contains('hidden')) {
+                    // Handle OTP verification
+                    const otp = Array.from(otpInputs).map(input => input.value).join('');
+                    if (otp.length === 6) {
+                        try {
+                            const response = await fetch('/api/auth/verify-otp', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${signupToken}`
+                                },
+                                body: JSON.stringify({
+                                    identifier: currentIdentifier,
+                                    otp,
+                                    userType: document.querySelector('.user-type-btn.active').dataset.type
+                                })
+                            });
+
+                            const data = await response.json();
+                            if (data.status === 'success') {
+                                // Store tokens
+                                localStorage.setItem('accessToken', data.data.accessToken);
+                                localStorage.setItem('refreshToken', data.data.refreshToken);
+                                
+                                // Show success animation and redirect
+                                showNotification('Account verified successfully!', 'success');
+                                buttonText.textContent = 'Redirecting...';
+                                
+                                // Add success animation to form
+                                const formCard = document.querySelector('.bg-black/40');
+                                formCard.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+                                formCard.style.transition = 'all 0.5s ease-in-out';
+                                
+                                setTimeout(() => {
+                                    window.location.href = '/dashboard.html';
+                                }, 1000);
+                            } else {
+                            showNotification('Invalid verification code. Please check and try again.', 'error');
+                            otpInputs[0].focus();
+                            }
+                        } catch (error) {
+                            showNotification('Error verifying code. Please try again.', 'error');
+                            otpInputs[0].focus();
+                            setLoading(false);
+                        }
+                    }
+                } else {
+                    // Initial signup
+                    const formData = new FormData(signupForm);
+                    const userData = Object.fromEntries(formData);
+                    
+                    try {
+                        const response = await fetch('/api/auth/signup', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                ...userData,
+                                userType: document.querySelector('.user-type-btn.active').dataset.type
+                            })
+                        });
+
+                        const data = await response.json();
+                        if (data.status === 'success') {
+                            signupToken = data.data.token;
+                            currentIdentifier = userData.phone;
+                            
+                            // Update contact display
+                            updateContactDisplay(userData.phone, userData.email);
+                            
+                            // Show OTP section and start timer
+                            otpSection.classList.remove('hidden');
+                            signupButton.textContent = 'Verify Code';
+                            startOtpTimer();
+                            
+                            // Hide form fields
+                            Array.from(signupForm.querySelectorAll('input, select')).forEach(input => {
+                                if (!input.classList.contains('otp-input')) {
+                                    input.closest('.grid, div:not(#otpSection)').classList.add('hidden');
+                                }
+                            });
+                            document.querySelector('.user-type-btn.active').closest('div').classList.add('hidden');
+                            
+                            showNotification('Verification codes sent successfully', 'success');
+                            // Clear any previous OTP inputs
+                            otpInputs.forEach(input => input.value = '');
+                            otpInputs[0].focus();
+                        } else {
+                            showNotification(data.message || 'Signup failed. Please try again.', 'error');
+                        }
+                        } catch (error) {
+                            showNotification('Error during signup. Please try again.', 'error');
+                            setLoading(false);
+                        }
+                }
+            });
+
+            // Handle OTP input
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('keyup', (e) => {
+                    // Allow only numbers
+                    input.value = input.value.replace(/[^0-9]/g, '');
+                    
+                    if (e.key !== 'Backspace') {
+                        if (input.value && index < otpInputs.length - 1) {
+                            otpInputs[index + 1].focus();
+                        }
+                        
+                        // Auto-submit when all digits are filled
+                        if (index === otpInputs.length - 1 && Array.from(otpInputs).every(input => input.value)) {
+                            signupButton.click();
+                        }
+                    } else if (index > 0 && !input.value) {
+                        otpInputs[index - 1].focus();
+                    }
+                });
+
+                // Handle paste event
+                input.addEventListener('paste', (e) => {
+                    e.preventDefault();
+                    const pastedData = (e.clipboardData || window.clipboardData)
+                        .getData('text')
+                        .replace(/[^0-9]/g, '')
+                        .slice(0, 6);
+                        
+                    if (pastedData.length === 6) {
+                        otpInputs.forEach((input, i) => {
+                            input.value = pastedData[i] || '';
+                        });
+                        signupButton.click();
+                    }
+                });
+            });
+
+            let otpTimer;
+            const RESEND_TIMEOUT = 30; // seconds
+
+            function startOtpTimer() {
+                let timeLeft = RESEND_TIMEOUT;
+                const timerDisplay = document.getElementById('otpTimer');
+                const resendBtn = document.getElementById('resendOtp');
+                
+                resendBtn.disabled = true;
+                
+                otpTimer = setInterval(() => {
+                    if (timeLeft <= 0) {
+                        clearInterval(otpTimer);
+                        timerDisplay.textContent = '';
+                        resendBtn.disabled = false;
+                        return;
+                    }
+                    
+                    timerDisplay.textContent = `${timeLeft}s`;
+                    timeLeft--;
+                }, 1000);
+            }
+
+            // Handle resend OTP
+            resendOtpBtn.addEventListener('click', async () => {
+                if (!signupToken || !currentIdentifier) {
+                    showNotification('Please fill the signup form first', 'error');
+                    return;
+                }
+
+                try {
+                    resendOtpBtn.disabled = true;
+                    const response = await fetch('/api/auth/resend-otp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${signupToken}`
+                        },
+                        body: JSON.stringify({
+                            identifier: currentIdentifier
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (data.status === 'success') {
+                        showNotification('New verification codes sent', 'success');
+                        startOtpTimer();
+                    } else {
+                        showNotification(data.message || 'Failed to resend codes', 'error');
+                        resendOtpBtn.disabled = false;
+                    }
+                } catch (error) {
+                    showNotification('Error resending verification codes', 'error');
+                    resendOtpBtn.disabled = false;
+                }
+            });
+
+            // Update contact info display
+            function updateContactDisplay(phone, email) {
+                document.getElementById('phoneDisplay').textContent = phone;
+                document.getElementById('emailDisplay').textContent = email;
+            }
+
+            // Enhanced notification function
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-4 right-4 p-4 rounded-lg text-white ${
+                    type === 'error' ? 'bg-red-500' :
+                    type === 'success' ? 'bg-green-500' :
+                    'bg-blue-500'
+                } shadow-lg z-50 transition-all duration-300 transform translate-x-full`;
+                
+                const icon = document.createElement('i');
+                icon.className = `fas fa-${
+                    type === 'error' ? 'exclamation-circle' :
+                    type === 'success' ? 'check-circle' :
+                    'info-circle'
+                } mr-2`;
+                
+                notification.appendChild(icon);
+                notification.appendChild(document.createTextNode(message));
+                document.body.appendChild(notification);
+
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+
+                // Animate out
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+            }
+
+            // Validate Aadhar number
+            const aadharInput = document.getElementById('aadhar');
+            aadharInput.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/\D/g, '').slice(0, 12);
+            });
+        });
+    </script>
+</body>
+</html>
