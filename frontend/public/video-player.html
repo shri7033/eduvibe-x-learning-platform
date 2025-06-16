@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUVIBE-X - Video Player</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/video-player.css">
+
+    <!-- Custom JavaScript -->
+    <script src="/js/video-player.js" defer></script>
+</head>
+<body class="bg-black text-white font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-black/90 backdrop-blur-sm z-40 border-b border-white/10">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-[#d4af37]">EDUVIBE-X</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="/index.html" class="hover:text-[#d4af37] transition">Home</a>
+                    <a href="/courses.html" class="hover:text-[#d4af37] transition">Courses</a>
+                    <a href="#" class="hover:text-[#d4af37] transition">About</a>
+                    <a href="#" class="hover:text-[#d4af37] transition">Contact</a>
+                    <button onclick="location.href='/login.html'" class="bg-[#d4af37] text-black px-6 py-2 rounded-full hover:bg-[#b38f2f] transition">
+                        Login
+                    </button>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Video Player Container -->
+    <div class="container mx-auto px-4 pt-24 pb-16">
+        <div class="max-w-4xl mx-auto">
+            <!-- Video Title -->
+            <h1 class="text-3xl font-bold mb-6 text-[#d4af37]">Introduction to Physics</h1>
+            
+            <!-- Custom Video Player -->
+            <div class="video-player-container relative bg-black rounded-lg overflow-hidden shadow-lg">
+                <!-- Video Element -->
+                <video id="videoPlayer" class="w-full aspect-video" poster="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" data-quality="360p">
+                    Your browser does not support the video tag.
+                </video>
+
+                <!-- Custom Controls -->
+                <div class="video-controls absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
+                    <!-- Progress Bar -->
+                    <div class="progress-container h-1 bg-white/30 rounded-full mb-4 cursor-pointer">
+                        <div class="progress-bar h-full bg-[#d4af37] rounded-full" style="width: 0%"></div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <!-- Left Controls -->
+                        <div class="flex items-center space-x-4">
+                            <button class="play-pause-btn text-white hover:text-[#d4af37]">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="volume-container flex items-center space-x-2">
+                                <button class="volume-btn text-white hover:text-[#d4af37]">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <input type="range" class="volume-slider w-20" min="0" max="100" value="100">
+                            </div>
+                            <span class="time-display text-sm text-white">0:00 / 0:00</span>
+                        </div>
+
+                        <!-- Right Controls -->
+                        <div class="flex items-center space-x-4">
+                            <!-- Quality Selector -->
+                            <select class="quality-selector bg-black text-white border border-[#d4af37] rounded px-2 py-1 text-sm">
+                                <option value="360">360p</option>
+                                <option value="480">480p</option>
+                                <option value="720">720p</option>
+                                <option value="1080">1080p</option>
+                            </select>
+
+                            <!-- Download Button -->
+                            <button class="download-btn text-white hover:text-[#d4af37]" title="Download (In-App Only)">
+                                <i class="fas fa-download"></i>
+                            </button>
+
+                            <!-- Fullscreen Button -->
+                            <button class="fullscreen-btn text-white hover:text-[#d4af37]">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Watermark -->
+                <div class="absolute top-4 right-4 text-white/50 pointer-events-none select-none">
+                    EDUVIBE-X
+                </div>
+            </div>
+
+            <!-- Video Information -->
+            <div class="mt-6 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-semibold">Chapter 1: Introduction to Motion</h2>
+                        <p class="text-gray-400">Dr. Sarah Johnson • Physics</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-white hover:text-[#d4af37]">
+                            <i class="fas fa-bookmark"></i>
+                        </button>
+                        <button class="text-white hover:text-[#d4af37]">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="text-gray-300">
+                    Learn the fundamental concepts of motion in physics. This introductory lesson covers velocity, 
+                    acceleration, and the basic principles of kinematics.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
