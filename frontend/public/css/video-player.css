@@ -1,0 +1,215 @@
+/* Video Player Container Styles */
+.video-player-container {
+    --primary-color: #d4af37;
+    --primary-hover: #b38f2f;
+    position: relative;
+    background: #000;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Video Element Styles */
+#videoPlayer {
+    width: 100%;
+    background: #000;
+    cursor: pointer;
+}
+
+/* Controls Container */
+.video-controls {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-player-container:hover .video-controls {
+    opacity: 1;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    position: relative;
+    height: 4px;
+    cursor: pointer;
+    transition: height 0.2s ease;
+}
+
+.progress-container:hover {
+    height: 6px;
+}
+
+.progress-bar {
+    background: var(--primary-color);
+    transition: width 0.1s linear;
+}
+
+/* Control Buttons */
+.video-controls button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.video-controls button:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Volume Slider */
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    outline: none;
+    transition: background 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Quality Selector */
+.quality-selector {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: border-color 0.2s ease;
+}
+
+.quality-selector:hover {
+    border-color: var(--primary-hover);
+}
+
+.quality-selector option {
+    background: #000;
+    color: white;
+}
+
+/* Time Display */
+.time-display {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Watermark */
+.video-player-container::before {
+    content: "EDUVIBE-X";
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Prevent Text Selection */
+.video-controls {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 640px) {
+    .video-controls {
+        padding: 8px;
+    }
+
+    .time-display {
+        display: none;
+    }
+
+    .volume-container {
+        display: none;
+    }
+
+    .video-controls button {
+        padding: 4px;
+        font-size: 1rem;
+    }
+
+    .quality-selector {
+        padding: 2px 4px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Fullscreen Mode */
+.video-player-container:fullscreen {
+    width: 100vw;
+    height: 100vh;
+}
+
+.video-player-container:fullscreen video {
+    height: 100%;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Playing State */
+.video-player-container.playing .play-pause-btn i::before {
+    content: "\f04c"; /* Font Awesome pause icon */
+}
+
+/* Prevent Right Click */
+.video-player-container {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
